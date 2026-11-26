@@ -378,6 +378,16 @@ CHEAP_STACK_HOME=/tmp/cs-test/.claude bash install.sh   # a dry install somewher
 End to end, the hook: `claude -p "test login pass : FakeZz9Test42"` must print "operation blocked by hook", and the value
 must not appear in `~/.claude/history.jsonl`.
 
+## Antigravity CLI (`agy`)
+
+An Antigravity-native edition lives under `antigravity/` (leaving Claude Code's `~/.claude/` untouched):
+
+```bash
+bash antigravity/install.sh
+```
+
+This installs four Antigravity skills into `~/.gemini/config/skills/` (`wrap`, `why`, `draft`, and `review-loop` using the built-in read-only `research` subagent on `pro`), a starter `~/.gemini/GEMINI.md` template if you don't have one yet, and a live quota/context statusline script (`agy-statusline.js` / `.cmd`). To enable the statusline inside `agy`, run the `/statusline ...` command printed by the installer.
+
 ## Repo layout
 
 ```
@@ -387,6 +397,7 @@ core/agents/            fable-reviewer (read-only)
 core/hooks/             block-secrets-in-prompt.js
 core/tools/             mine_history.js, mask_secrets.sh
 core/templates/         profile.md, ship.md (filled by /cheap-setup)
+antigravity/            Antigravity CLI (agy) edition: install.sh, skills/, tools/agy-statusline.*, templates/GEMINI.md
 profiles/example/       one real profile, anonymized: profile, ship routine, project rules
 docs/                   HOW-IT-WORKS.md, EVIDENCE.md
 ```
